@@ -1,7 +1,6 @@
 import { Avatar, Button, TextField, Typography } from '@mui/material';
 import { Box, height } from '@mui/system';
 import React from 'react';
-import NavBar from '../components/NavBar';
 import blogImage from '../assets/blog.png';
 import { Form, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -21,7 +20,6 @@ const validationSchema = Yup.object({
 const NewBlog = () => {
     return (
         <Box>
-            <NavBar />
             <Box
                 sx={{
                     display: 'flex',
@@ -49,7 +47,7 @@ const NewBlog = () => {
                 <Typography
                     variant="h4"
                     sx={{ m: 3 }}
-                >{`}{ New Blog }{`}</Typography>
+                >{` New Blog `}</Typography>
                 <Formik
                     className="container"
                     initialValues={initialValues}

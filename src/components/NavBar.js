@@ -35,6 +35,7 @@ const NavBar = () => {
                         color="inherit"
                         aria-label="menu"
                         sx={{ mr: 2 }}
+                        href="/"
                     >
                         <img src={logo} alt="logo" style={{ width: '80px' }} />
                     </IconButton>
@@ -52,7 +53,7 @@ const NavBar = () => {
                             href="/"
                             style={{ textDecoration: 'none', color: '#fff' }}
                         >
-                            {`}{ MF Blog }{`}
+                            {` MF Blog `}
                         </a>
                     </Typography>
                     <IconButton
@@ -80,8 +81,8 @@ const NavBar = () => {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                     >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>New</MenuItem>
+                        <MenuItem onClick={handleClose}> Profile</MenuItem>
+                        <MenuItem onClick={handleClose}><a href="/newblog" style={{color : "#000"}}>New</a></MenuItem>
                         <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </Menu>
                 </Toolbar>
