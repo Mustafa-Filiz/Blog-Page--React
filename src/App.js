@@ -1,6 +1,7 @@
 import './App.css';
 import NavBar from './components/NavBar';
 import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
 import NewBlog from './pages/NewBlog';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <div className="App">
       {/* <NavBar /> */}
       {/* <Dashboard /> */}
-      <NewBlog />
+      {/* <NewBlog /> */}
+      <Login />
     </div>
   );
 }
