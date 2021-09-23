@@ -3,7 +3,20 @@ import { Box, height } from '@mui/system';
 import React from 'react';
 import NavBar from '../components/NavBar';
 import blogImage from '../assets/blog.png';
-import { Formik } from 'formik';
+import { Form, Formik, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+const initialValues = {
+    name: '',
+    email: '',
+    userName: '',
+};
+
+const validationSchema = Yup.object({
+    title: Yup.string().required('This field is required.'),
+    imgURL: Yup.string().required('This field is required.'),
+    context: Yup.string().required('This field is required.'),
+});
 
 const NewBlog = () => {
     return (
@@ -35,10 +48,15 @@ const NewBlog = () => {
                 </Avatar>
                 <Typography
                     variant="h4"
-                    sx={{ m: 3}}
+                    sx={{ m: 3 }}
                 >{`}{ New Blog }{`}</Typography>
-                <Formik>
-                    <form
+                <Formik
+                    className="container"
+                    initialValues={initialValues}
+                    // onSubmit={onSubmit}
+                    validationSchema={validationSchema}
+                >
+                    <Form
                         action=""
                         style={{
                             display: 'flex',
@@ -47,26 +65,40 @@ const NewBlog = () => {
                         }}
                     >
                         <TextField
+                            id="title"
+                            name="title"
                             variant="outlined"
                             label="Title *"
-                            sx={{ m: 1}}
+                            sx={{ m: 1 }}
                         />
+                        <ErrorMessage name="title" />
                         <TextField
+                            id="imgURL"
+                            name="imgURL"
                             variant="outlined"
                             label="Image URL *"
-                            sx={{ m: 1}}
+                            sx={{ m: 1 }}
                         />
+                        <ErrorMessage name="imgURL" />
                         <TextField
+                            id="context"
+                            name="context"
                             variant="outlined"
                             label="Context *"
-                            sx={{ m: 1}}
+                            sx={{ m: 1 }}
                             rows={10}
                             multiline
                         />
-                        <Button variant="contained" size="large" sx={{ m: 1, backgroundColor : "#eba10e" }}>
+                        <ErrorMessage name="context" />
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            size="large"
+                            sx={{ m: 1, backgroundColor: '#eba10e' }}
+                        >
                             SUBMIT
                         </Button>
-                    </form>
+                    </Form>
                 </Formik>
             </Box>
         </Box>
