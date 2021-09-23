@@ -1,16 +1,10 @@
 import './App.css';
-import NavBar from './components/NavBar';
-import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
-import NewBlog from './pages/NewBlog';
+import AppRouter from './router/AppRouter';
 
 function App() {
   return (
     <div className="App">
-      {/* <NavBar /> */}
-      {/* <Dashboard /> */}
-      {/* <NewBlog /> */}
-      <Login />
+      <AppRouter />
     </div>
   );
 }

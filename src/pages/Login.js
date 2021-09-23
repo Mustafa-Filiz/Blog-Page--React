@@ -4,7 +4,6 @@ import React from 'react';
 import blogImage from '../assets/blog.png';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import NavBar from '../components/NavBar';
 
 const initialValues = {
     name: '',
@@ -20,7 +19,6 @@ const validationSchema = Yup.object({
 const Login = () => {
     return (
         <Box>
-            <NavBar />
             <Box
                 sx={{
                     display: 'flex',
@@ -32,14 +30,15 @@ const Login = () => {
                     backgroundColor: '#c6c4c2',
                 }}
             >
-                <Paper elevation={24}
+                <Paper
+                    elevation={24}
                     sx={{
                         width: '450px',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
-                        backgroundColor: '#a2957b'
+                        backgroundColor: '#a2957b',
                     }}
                 >
                     <Avatar
@@ -98,7 +97,7 @@ const Login = () => {
                                 size="large"
                                 sx={{ m: 1, backgroundColor: '#eba10e' }}
                             >
-                                SUBMIT
+                                LOGIN
                             </Button>
                         </Form>
                     </Formik>

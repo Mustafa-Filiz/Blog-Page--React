@@ -4,7 +4,6 @@ import React from 'react';
 import blogImage from '../assets/blog.png';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import NavBar from '../components/NavBar';
 
 const initialValues = {
     name: '',
@@ -20,7 +19,6 @@ const validationSchema = Yup.object({
 const Register = () => {
     return (
         <Box>
-            <NavBar />
             <Box
                 sx={{
                     display: 'flex',
@@ -58,7 +56,7 @@ const Register = () => {
                     <Typography
                         variant="h4"
                         sx={{ m: 3 }}
-                    >{` REGISTER `}</Typography>
+                    >{` Register `}</Typography>
 
                     <Formik
                         className="container"
