@@ -1,14 +1,15 @@
 import { Avatar, Button, TextField, Typography } from '@mui/material';
 import { Box, height } from '@mui/system';
-import React from 'react';
+import React, { useState } from 'react';
 import blogImage from '../assets/blog.png';
-import { Form, Formik, ErrorMessage } from 'formik';
+import { Form, Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
+import { addBlog } from '../utils/functions';
 
 const initialValues = {
-    name: '',
-    email: '',
-    userName: '',
+    title: '',
+    imgURL: '',
+    context: '',
 };
 
 const validationSchema = Yup.object({
@@ -18,6 +19,25 @@ const validationSchema = Yup.object({
 });
 
 const NewBlog = () => {
+    const [blogInfo, setBlogInfo] = useState(initialValues);
+    // const [title, setTitle] = useState("")
+    // const [imgURL, setImgURL] = useState("")
+    // const [context, setContext] = useState("")
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setBlogInfo({ ...blogInfo, [name]: value });
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        // console.log(e.target.title.value)
+        // console.log(e.target.imgURL.value)
+        // console.log(e.target.context.value)
+        addBlog(blogInfo);
+        
+    };
+
     return (
         <Box>
             <Box
@@ -51,7 +71,6 @@ const NewBlog = () => {
                 <Formik
                     className="container"
                     initialValues={initialValues}
-                    // onSubmit={onSubmit}
                     validationSchema={validationSchema}
                 >
                     <Form
@@ -61,12 +80,15 @@ const NewBlog = () => {
                             flexDirection: 'column',
                             width: '400px',
                         }}
+                        onSubmit={onSubmit}
                     >
                         <TextField
                             id="title"
                             name="title"
                             variant="outlined"
                             label="Title *"
+                            value={blogInfo.title}
+                            onChange={handleChange}
                             sx={{ m: 1 }}
                         />
                         <ErrorMessage name="title" />
@@ -75,6 +97,8 @@ const NewBlog = () => {
                             name="imgURL"
                             variant="outlined"
                             label="Image URL *"
+                            value={blogInfo.imgURL}
+                            onChange={handleChange}
                             sx={{ m: 1 }}
                         />
                         <ErrorMessage name="imgURL" />
@@ -83,6 +107,8 @@ const NewBlog = () => {
                             name="context"
                             variant="outlined"
                             label="Context *"
+                            value={blogInfo.context}
+                            onChange={handleChange}
                             sx={{ m: 1 }}
                             rows={10}
                             multiline

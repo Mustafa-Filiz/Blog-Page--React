@@ -10,31 +10,27 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-
-const CardComp = () => {
-
+const CardComp = ({ blog }) => {
+    console.log(blog)
     return (
-        <Card sx={{ maxWidth: 345, m : 5 }}>
-
+        <Card sx={{ maxWidth: 345, m: 5 }}>
             <CardMedia
                 component="img"
                 height="194"
-                image="https://cdn.pixabay.com/photo/2018/12/09/07/36/city-3864462_960_720.jpg"
-                alt="Paella dish"
+                image={blog.imgURL}
+                alt={blog.title}
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun
-                    meal to cook together with your guests. Add 1 cup of frozen
-                    peas along with the mussels, if you like.
+                    {blog.context}
                 </Typography>
             </CardContent>
             <CardHeader
-                avatar={
-                    <AccountCircle fontSize="large" />
-                }
-                title="Shrimp and Chorizo Paella"
-                subheader={new Date().toLocaleDateString("en-US", {dateStyle : "medium"})}
+                avatar={<AccountCircle fontSize="large" />}
+                title={blog.title}
+                subheader={new Date().toLocaleDateString('en-US', {
+                    dateStyle: 'medium',
+                })}
             />
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
